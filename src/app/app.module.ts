@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CounterComponent } from './playground/components/counter/counter.component';
 import { AuthComponent } from './playground/components/auth/auth.component';
+import {PostsComponent} from './playground/components/posts/posts.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CounterComponent,
-    AuthComponent
+    AuthComponent,
+    PostsComponent
   ],
   imports: [
     BrowserModule,
