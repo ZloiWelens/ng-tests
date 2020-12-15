@@ -28,4 +28,13 @@ describe('CounterComponent', () => {
     component.decrement()
     expect(component.counter).toBe(9)
   });
+
+  it('should inc value by event emitter', () => {
+    let result = undefined
+    component.counterHandler.subscribe(value => result = value)
+
+    component.increment()
+
+    expect(result).toBe(11)
+  });
 });
