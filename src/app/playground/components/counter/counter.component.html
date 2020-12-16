@@ -1,1 +1,3 @@
-<p>Counter = {{counter}}</p>
+<p [class.green]="counter % 2 === 0">Counter = {{counter}}</p>
+<button id="inc" (click)="increment()">+</button>
+<button id="dec" (click)="decrement()">-</button>

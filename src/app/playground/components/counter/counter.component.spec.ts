@@ -1,40 +1,33 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {CounterComponent} from './counter.component';
+import {By} from '@angular/platform-browser';
 
 describe('CounterComponent', () => {
   let component: CounterComponent;
-  let fixture: ComponentFixture<CounterComponent>;
+  let fixture: ComponentFixture<CounterComponent>
 
-  beforeEach(async(() => {
+  beforeEach((() => {
     TestBed.configureTestingModule({
       declarations: [CounterComponent]
     })
-      .compileComponents();
+
+    fixture = TestBed.createComponent(CounterComponent)
+    component = fixture.componentInstance
   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(CounterComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  it('should be created' , () => {
+    expect(component).toBeDefined()
+  })
 
-  it('should inc for counter', () => {
-    component.increment()
-    expect(component.counter).toBe(11)
-  });
+  it('should render counter props' , () => {
+    component.counter = 20
 
-  it('should decr for counter', () => {
-    component.decrement()
-    expect(component.counter).toBe(9)
-  });
+    fixture.detectChanges()
 
-  it('should inc value by event emitter', () => {
-    let result = undefined
-    component.counterHandler.subscribe(value => result = value)
+    let de = fixture.debugElement.query(By.css('p'))
+    let el: HTMLElement = de.nativeElement
+    expect(el.textContent).toContain('20')
+  })
 
-    component.increment()
-
-    expect(result).toBe(11)
-  });
 });
