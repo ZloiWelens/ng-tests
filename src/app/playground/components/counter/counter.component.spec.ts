@@ -30,4 +30,21 @@ describe('CounterComponent', () => {
     expect(el.textContent).toContain('20')
   })
 
+  it('should add class green if counter is even' , () => {
+    let de = fixture.debugElement.query(By.css('p'))
+    let el: HTMLElement = de.nativeElement
+
+    component.counter = 40
+
+    fixture.detectChanges()
+    expect(el.classList.contains('green')).toBeTruthy()
+  })
+
+  it('should INCREMENT counter by user click btn' , () => {
+    let btn = fixture.debugElement.query(By.css('#inc'))
+    btn.triggerEventHandler('click', {})
+
+    expect(component.counter).toBe(11)
+  })
+
 });
