@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { CounterComponent } from './playground/components/counter/counter.component';
 import { AuthComponent } from './playground/components/auth/auth.component';
 import {PostsComponent} from './playground/components/posts/posts.component';
+import { RoutingComponent } from './playground/components/routing/routing.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CounterComponent,
     AuthComponent,
-    PostsComponent
+    PostsComponent,
+    RoutingComponent
   ],
   imports: [
     BrowserModule,
