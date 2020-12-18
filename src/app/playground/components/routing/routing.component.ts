@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
@@ -11,18 +11,17 @@ export class RoutingComponent implements OnInit {
   constructor(
     private _router: Router,
     private _route: ActivatedRoute
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this._route.params.subscribe(params => {
-      if (params['id'] === '0') {
-        this._router.navigate(['/404'])
-      }
+      if (params['id'] == '0') this._router.navigate(['/404'])
     })
   }
 
   goBack() {
-  this._router.navigate(['/posts'])
+    this._router.navigate(['/posts'])
   }
 
 }

@@ -1,17 +1,23 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {RoutingComponent} from './routing.component';
-import {Observable} from 'rxjs';
+import {Subject} from 'rxjs';
 import {ActivatedRoute, Params, Router} from '@angular/router';
-import {Test} from 'tslint';
 
 class RouterStub {
-  navigate(path: any[]) {
-    return path
+  navigate(path: string[]) {
   }
 }
 
 class ActivatedRoutedStub {
-  params: Observable<Params>
+  private _subject = new Subject<Params>()
+
+  push(params: Params) {
+    this._subject.next(params)
+  }
+
+  get params() {
+    return this._subject.asObservable()
+  }
 }
 
 describe('RoutingComponent', () => {
@@ -23,11 +29,12 @@ describe('RoutingComponent', () => {
       declarations: [RoutingComponent],
       providers: [
         {provide: Router, useClass: RouterStub},
-        {provide: ActivatedRoute, useClass: ActivatedRoutedStub},
+        {provide: ActivatedRoute, useClass: ActivatedRoutedStub}
       ]
     })
     fixture = TestBed.createComponent(RoutingComponent);
     component = fixture.componentInstance;
+    fixture.detectChanges();
   });
 
   it('should create', () => {
@@ -42,5 +49,15 @@ describe('RoutingComponent', () => {
     component.goBack()
 
     expect(spy).toHaveBeenCalledWith(['/posts'])
+  });
+
+  it('should navigate 404 if id = 0', () => {
+    let router = TestBed.inject(Router)
+    let route: ActivatedRoutedStub = TestBed.get(ActivatedRoute)
+    let spy = spyOn(router, 'navigate')
+
+    route.push({id: '0'})
+
+    expect(spy).toHaveBeenCalledWith(['/404'])
   });
 });
