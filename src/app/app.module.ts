@@ -8,6 +8,7 @@ import { AuthComponent } from './playground/components/auth/auth.component';
 import {PostsComponent} from './playground/components/posts/posts.component';
 import { RoutingComponent } from './playground/components/routing/routing.component';
 import { NavbarComponent } from './playground/components/navbar/navbar.component';
+import { ColorDirective } from './playground/directives/color.directive';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { NavbarComponent } from './playground/components/navbar/navbar.component
     AuthComponent,
     PostsComponent,
     RoutingComponent,
-    NavbarComponent
+    NavbarComponent,
+    ColorDirective
   ],
   imports: [
     BrowserModule,
