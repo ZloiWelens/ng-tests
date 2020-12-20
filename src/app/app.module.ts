@@ -7,6 +7,7 @@ import { CounterComponent } from './playground/components/counter/counter.compon
 import { AuthComponent } from './playground/components/auth/auth.component';
 import {PostsComponent} from './playground/components/posts/posts.component';
 import { RoutingComponent } from './playground/components/routing/routing.component';
+import { NavbarComponent } from './playground/components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { RoutingComponent } from './playground/components/routing/routing.compon
     CounterComponent,
     AuthComponent,
     PostsComponent,
-    RoutingComponent
+    RoutingComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
